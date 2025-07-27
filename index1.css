@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    box-shadow: 2px 2px 5px 2px #106d1f;
+    border-radius: 6px;
+    padding: 12px;
+    height: 400px;
+    width: 60%;
+    margin: 60px 60px;
+    justify-content: center;
+    align-items: center;
+    transition: transform .3s ease;
+}
+.container:hover {
+    transform: scale(1.01);
+}
+nav {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 0.09fr);
+    justify-content: flex-end;
+    margin: 10px 5px;
+}
+nav a {
+    text-decoration: none;
+    height: 50px;
+    display: flex;
+    color: #125c1e;
+    justify-content: center;
+    align-items: center;
+}
+a:hover {
+    color: whitesmoke;
+    background: rgba(4, 114, 28, 0.938);
+    border-radius: 5px;
+    height: 30px;
+}
+
+.doc {
+    width: 65%;
+    float: left;
+}
+.doc h1 {
+    text-shadow: 2px 2px 4px #17972c;
+    font-size: 40px;
+}
+.doc p {
+    margin: 10px 4px;
+    font-size: 20px;
+}
+.social {
+    display: grid;
+    grid-template-columns: repeat(4, .04fr);
+    width: 60%;
+    height: 40px;
+    align-items: flex-end;
+    font-size: 40px;
+    margin-top: 30px;
+    grid-gap: 12px;
+    
+}
+.fa-square-whatsapp {
+    color: #25D366;
+}
+.fa-square-facebook {
+    color: #1877F2;
+}
+.fa-square-github {
+    color: #181717;
+}
+.fa-square-instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.fa-brands:hover {
+    transform: scale(1.01);
+}
+
+button {
+    height: 35px;
+    width: 168px;
+    font-size: 16px;
+    margin: 30px;
+    color: rgb(212, 204, 204);
+    background: rgba(5, 158, 38, 0.938);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0.7s;
+}
+button:hover {
+    background: rgba(4, 114, 28, 0.938);
+    
+}
+img {
+    width: 34%;
+    height: 275px;
+    border-radius: 150px;
+    box-shadow: 2px 2px 4px #136d22;
+    margin-top: 20px;
+}
