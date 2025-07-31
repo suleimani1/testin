@@ -18,3 +18,29 @@ console.log("Sum of two numbers:", sum);
 
 const product = favNum1 * favNum2;
 console.log("Product of two numbers:", product);
+
+const userProfile = {
+    username: "suleimani",
+    age: 21,
+    isLoggedIn: true,
+    skills: ["HTML", "CSS", "JavaScript"]
+}
+console.log("Username:", userProfile.username);
+console.log("My second skill from the list is:", userProfile.skills[1]);
+
+function displayWelcomeMessage(user) {
+    console.log(`Welcome ${user} Glad to have you here`);
+}
+displayWelcomeMessage(userProfile);
+
+function checkLoginStatus(profile){
+    if(profile.isLoggedIn){
+        console.log("User is currently logged in");
+    }
+    else {
+        console.log("User is not logged in");
+    }
+}
+
+const statusMessage = checkLoginStatus(userProfile);
+console.log(statusMessage);
