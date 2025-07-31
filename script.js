@@ -44,3 +44,5 @@ function checkLoginStatus(profile){
 
 const statusMessage = checkLoginStatus(userProfile);
 console.log(statusMessage);
+
+// comment
