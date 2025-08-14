@@ -1,48 +1,40 @@
-console.log("Hello from script.js!");
+const userCard = document.querySelector('#user-card');
+const userButton = document.querySelector('#fetch-user-button');
 
-const name = "suleimani";
-const age = 21;
-const isStudent= true;
+const fetchUser = async() => {
+    try {
+        const response = await fetch('https://randomuser.me/api/');
 
-console.log("Name:", name);
-console.log("Age:", age);
-console.log("Is a Student?", isStudent);
+        const data = await response.json();
 
-let info = `My name is ${name} and I am ${age} years old.`;
-console.log("Some info about me:", info);
+        console.log(data);
 
-const favNum1 = 12;
-const favNum2 = 23;
-let sum = favNum1 + favNum2;
-console.log("Sum of two numbers:", sum);
-
-const product = favNum1 * favNum2;
-console.log("Product of two numbers:", product);
-
-const userProfile = {
-    username: "suleimani",
-    age: 21,
-    isLoggedIn: true,
-    skills: ["HTML", "CSS", "JavaScript"]
-}
-console.log("Username:", userProfile.username);
-console.log("My second skill from the list is:", userProfile.skills[1]);
-
-function displayWelcomeMessage(user) {
-    console.log(`Welcome ${user} Glad to have you here`);
-}
-displayWelcomeMessage(userProfile);
-
-function checkLoginStatus(profile){
-    if(profile.isLoggedIn){
-        console.log("User is currently logged in");
+        displayUser(data.results[0]);
     }
-    else {
-        console.log("User is not logged in");
-    }
-}
+    catch(error) { console.error("failed to fetch user:", error);};
+};
 
-const statusMessage = checkLoginStatus(userProfile);
-console.log(statusMessage);
+const displayUser = (user) =>{
 
-// comment
+        const userHTML = `
+    <img src="${user.picture.large}" alt="User photo" class="rounded-full mx-auto border-4 border-white">
+    <h2 class="text-xl font-bold mt-2">${user.name.first} ${user.name.last}</h2>
+    <p class="text-slate-600">${user.email}</p>
+    <p class="text-slate-500">Location: ${user.location.city}, ${user.location.country}</p>
+`;
+userCard.innerHTML = userHTML;
+    
+};
+
+userButton.addEventListener('click',fetchUser);
+fetchUser();
+
+const themeButton = document.querySelector('#theme-button');
+const bodyElement = document.querySelector('body');
+
+const toggleTheme = () => {
+    bodyElement.classList.toggle('dark');
+    
+};
+
+themeButton.addEventListener('click', toggleTheme);

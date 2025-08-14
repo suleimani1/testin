@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio </title>
+    <!-- <script src="script.js"></script> -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" 
     integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
@@ -13,6 +14,9 @@
     <nav class="flex justify-around mt-12">
         <div class="f">
             <h1 class="font-bold text-2xl ">My Own Portfolio</h1>
+        </div>
+        <div>
+            <button id="theme-button">Toggle Dark Mode</button>
         </div>
         <div class="flex  md:gap-7">
             <a href="#" class="font-medium p-2 border-b-2 border-teal-600 text-teal-600 animate-pulse">Home</a>
@@ -39,9 +43,19 @@
             <h3 class="text-teal-600 text-lg font-bold mt-5">Skills</h3>
             
         </div>
-        <div class="flex justify-center w-1/2 ml-5 mr-5 mb-10 p-2 h-96 rounded shadow-3kill %
-        five-server --port=5000xl hover:shadow-teal-600 hover:shadow-sm">
+        <div class="flex justify-center w-1/2 ml-5 mr-5 mb-10 p-2 h-96 rounded shadow-xl hover:shadow-teal-600 hover:shadow-sm">
             <h3 class="text-teal-600 text-lg font-bold mt-5">Projects</h3>
+            <section id="async">
+                <!-- Inside your "My Projects" section -->
+                <h3 class="text-2xl font-bold mb-4">Random User Project</h3>
+                <div id="user-card" class="bg-slate-200 p-4 rounded-lg text-center">
+                    <p>Loading user data...</p>
+                </div>
+                <button id="fetch-user-button" class="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+                Get New User
+                </button>
+
+            </section>
         </div>
     </section>
 
@@ -67,5 +81,6 @@
             <a href="https://github.com/suleimani1" class="text-green-900">https://github.com/suleimani1</a>
         </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
