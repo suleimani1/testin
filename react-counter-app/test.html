@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enhanced Registration Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .course-section {
+      display: none;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border-radius: 4px;
+    }
+    .course-section h3 {
+      margin-top: 0;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Registration Form</h1>
+  <form id="registrationForm">
+    <div class="form-group">
+      <label for="name">Full Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="userType">I am a:</label>
+      <select id="userType" name="userType" required>
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+        <option value="admin">Admin</option>
+      </select>
+    </div>
+
+    <!-- Student-specific fields (hidden by default) -->
+    <div id="studentFields" class="course-section">
+      <h3>Course Information</h3>
+      <div class="form-group">
+        <label for="morningCourse">Morning Module:</label>
+        <select id="morningCourse" name="morningCourse">
+          <option value="">Select morning course</option>
+          <option value="web">Web Technology</option>
+          <option value="networking">networking</option>
+          <option value="game">Game Development</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="afternoonCourse">Afternoon Module:</label>
+        <select id="afternoonCourse" name="afternoonCourse">
+          <option value="">Select afternoon course</option>
+          <option value="Python">Python and Data Science</option>
+          <option value="maintenance">Maintenance</option>
+          <option value="mobile">Mobile application</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const userTypeSelect = document.getElementById('userType');
+      const studentFields = document.getElementById('studentFields');
+      const form = document.getElementById('registrationForm');
+
+      // Show/hide student fields based on user type
+      function toggleStudentFields() {
+        if (userTypeSelect.value === 'student') {
+          studentFields.style.display = 'block';
+          document.getElementById('morningCourse').required = true;
+          document.getElementById('afternoonCourse').required = true;
+        } else {
+          studentFields.style.display = 'none';
+          document.getElementById('morningCourse').required = false;
+          document.getElementById('afternoonCourse').required = false;
+        }
+      }
+
+      // Initial check
+      toggleStudentFields();
+      
+      // Add event listener
+      userTypeSelect.addEventListener('change', toggleStudentFields);
+
+      // Form submission
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        
+        // Structure the data differently for students
+        if (data.userType === 'student') {
+          data.courses = {
+            morning: data.morningCourse,
+            afternoon: data.afternoonCourse
+          };
+          delete data.morningCourse;
+          delete data.afternoonCourse;
+        } else {
+          // Remove course fields for non-students
+          delete data.morningCourse;
+          delete data.afternoonCourse;
+        }
+
+        console.log('Form Data:', data);
+        alert('Registration successful!\nCheck console for submitted data');
+        
+        // Reset form
+        form.reset();
+        studentFields.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
